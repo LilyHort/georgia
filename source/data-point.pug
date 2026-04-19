@@ -1,156 +1,157 @@
-const dataPoints = [
-  {
-    place: 'Степанцминда (старт)',
-    coordinates: { lat: '42.6561', lng: '44.6453' },
-    text: 'Старт маршрута из Степанцминды. Гергетский храм и виды на Казбек — идеальное начало. Ночлег в гостевом доме или кемпинге.',
-    photo: 'images/stepantsminda.jpg',
-    link: 'https://gotrip.ge/blog/chto-posmotret/stepantsminda-kazbegi/'
-  },
-  {
-    place: 'Уплисцихе',
-    coordinates: { lat: '41.964158', lng: '44.185685' },
-    text: 'Древний пещерный город недалеко от Гори — логичная первая остановка по Военно-Грузинской дороге. 2–3ч на осмотр скал и залов.',
-    photo: 'images/uplistsikhe.jpeg',
-    link: 'https://gotrip.ge/blog/chto-posmotret/uplistsikhe/'
-  },
-  {
-    place: 'Оборудованный кемпинг (Имеретия)',
-    coordinates: { lat: '42.587277', lng: '42.700982' },
-    text: 'После Уплисцихе — первый кемпинг в Имеретии. Живописные виды, костёр вечером. Отдых перед каньонами.',
-    photo: 'images/aghvi-eco-camping-in-georgia-in-campsaround-13.jpg',
-    link: 'https://www.instagram.com/aghvi.camping/'
-  },
-  {
-    place: 'Каньон Окаце',
-    coordinates: { lat: '42.454770', lng: '42.549449' },
-    text: 'Весенний каньон — бирюзовая река, подвесной мост. Идеально для фото и адреналина.',
-    photo: 'images/okace.jpg',
-    link: 'https://www.advantour.com/rus/georgia/kutaisi/okatse-canyon.htm'
-  },
-  {
-    place: 'Campsite under two oaks',
-    coordinates: { lat: '42.362143', lng: '42.597318' },
-    text: 'Кемпинг под двумя дубами после каньонов. Палатки, природа, восстановление сил.',
-    photo: 'images/oaks.jpg',
-    link: 'https://www.booking.com/hotel/ge/campsite-under-two-oaks.ru.html'
-  },
-  {
-    place: 'Пещера Прометея',
-    coordinates: { lat: '42.376668', lng: '42.600808' },
-    text: 'Подземный мир со сталактитами и подсветкой. Прохладно внутри — отличный контраст весенней жаре.',
-    photo: 'images/prometheus-cave-formed.jpg',
-    link: 'https://www.advantour.com/rus/georgia/kutaisi/prometheus-cave.htm'
-  },
-  {
-    place: 'Заброшенные санатории',
-    coordinates: { lat: '42.327720', lng: '42.602638' },
-    text: 'Цхалтубо — сталинские руины для сталкерских фото. Атмосферно и загадочно.',
-    photo: 'images/chaltubo.jpeg',
-    link: 'https://dzen.ru/a/Zh_eD9cHVTY55uX1'
-  },
-  {
-    place: 'Крепость Нокалакеви',
-    coordinates: { lat: '42.357865', lng: '42.193240' },
-    text: 'Древняя крепость на Black Sea coast. Переход от гор к побережью.',
-    photo: 'images/nokalakevi.jpg',
-    link: 'https://travelgeorgia.ru/98/'
-  },
-  {
-    place: 'Горячие источники (у Нокалакеви)',
-    coordinates: { lat: '42.365617', lng: '42.195372' },
-    text: 'Релакс в тёплых источниках. Идеальное место для кемпинга после долгого дня.',
-    photo: 'images/nokalakevis-gogirdovani-tsqlebi-1.jpg',
-    link: 'https://georgiantravelguide.com/ru/nokalakevis-gogirdovani-tsqlebi'
-  },
-  {
-    place: 'Пляж Уреки',
-    coordinates: { lat: '41.997682', lng: '41.758343' },
-    text: 'Чёрный магнитный песок — редкость для Грузии. Лечебный пляж для отдыха.',
-    photo: 'images/sea.jpeg',
-    link: 'https://101hotels.com/georgia/ureki/camping_in_ureki.html'
-  },
-  {
-    place: 'Крепость Хертвиси',
-    coordinates: { lat: '41.479628', lng: '43.285770' },
-    text: 'Одна из древнейших крепостей Грузии. Короткая остановка перед Вардзией.',
-    photo: 'images/caption.jpg',
-    link: 'https://v-georgia.com/showplaces/xarcvisi-odna-iz-naistarejshix-krepostej-gruzii-2/'
-  },
-  {
-    place: 'Вардзия',
-    coordinates: { lat: '41.381076', lng: '43.284224' },
-    text: 'Пещерный монастырь XII века. Обязательная точка — must-see Грузии.',
-    photo: 'images/vardzia.jpg',
-    link: 'http://advantour.com/rus/georgia/vardzia.htm'
-  },
-  {
-    place: 'озеро Табацкури',
-    coordinates: { lat: '41.645570', lng: '43.626242' },
-    text: 'Вулканическое озеро на 2000м. Кемпинг с видами на горы.',
-    photo: 'images/tabackuri.jpg',
-    link: 'https://georgiantravelguide.com/ru/ozero-tabackuri'
-  },
-  {
-    place: 'Село Хуло ⚠️',
-    coordinates: { lat: '41.636345', lng: '42.296034' },
-    text: 'Аджария highlands — картошка и канатка. ⚠️ Серпантины мокрые весной.',
-    photo: 'images/hulo.jpg',
-    link: 'https://batumilife.com/hulo/'
-  },
-  {
-    place: 'Гомисмта ⚠️',
-    coordinates: { lat: '41.827945', lng: '42.158217' },
-    text: 'Королевство облаков в Гурии. ⚠️ Высокогорье — риск тумана/снега.',
-    photo: 'images/gomismta.webp',
-    link: 'https://v-georgia.com/showplaces/gomis-mta-pervozdannaya-priroda-vyshe-oblakov/'
-  },
-  {
-    place: 'Крепость Петра',
-    coordinates: { lat: '41.767854', lng: '41.753856' },
-    text: 'Византийская крепость над Чёрным морем. Финал аджарского блока.',
-    photo: 'images/petra-fortress.jpg',
-    link: 'https://www.advantour.com/rus/georgia/batumi/petra.htm'
-  },
-  {
-    place: 'Кемпинг у водопада',
-    coordinates: { lat: '41.530475', lng: '41.710530' },
-    text: 'Ночёвка у Mirveti водопада после Петры. Шум воды — природный белый шум.',
-    photo: 'images/mirveti.jpeg',
-    link: 'https://georgia.to/ru/places-to-go/adjara/mirveti-waterfall/'
-  },
-  {
-    place: 'Цветные горы (Кахетия)',
-    coordinates: { lat: '41.541436', lng: '45.248625' },
-    text: 'Яркие холмы Мравалцваро. Переход к восточному блоку.',
-    photo: 'images/mravalckaro.jpeg',
-    link: 'https://georgiantravelguide.com/ru/raznocvetnye-gory-mravalckaro'
-  },
-  {
-    place: 'Национальный парк Вашловани',
-    coordinates: { lat: '41.246119', lng: '45.843801' },
-    text: 'Саванна и каньоны как в Африке. Кемпинг в парке с гидом.',
-    photo: 'images/vashlovani.jpg',
-    link: 'https://georgiantravelguide.com/ru/nacionalnyy-park-vashlovani'
-  },
-  {
-    place: 'Шатили ⚠️',
-    coordinates: { lat: '42.659396', lng: '45.156477' },
-    text: 'Хевсуретские башни. ⚠️ Дикая дорога — открыта только летом.',
-    photo: 'images/shatili.jpg',
-    link: 'https://www.travelgeorgia.ru/89/'
-  },
-  {
-    place: 'Обсерватория Абастумани ⚠️',
-    coordinates: { lat: '41.754647', lng: '42.832104' },
-    text: 'Астрофизическая обсерватория СССР. ⚠️ Высокогорье — серпантины.',
-    photo: 'images/abastumani.jpeg',
-    link: 'https://v-georgia.com/showplaces/observatoriya-v-abastumani-mesto-gde-mozhno-smotret-na-zvezdy/'
-  },
-  {
-    place: 'Местия ⚠️',
-    coordinates: { lat: '43.039262', lng: '42.730278' },
-    text: 'Сванские башни (опционально). ⚠️ Серпантин Зугдиди-Местия часто закрыт в апреле.',
-    photo: 'images/mestiya.jpg',
-    link: 'https://gotrip.ge/blog/chto-posmotret/mestiya-chto-posmotret/'
-  }
-];
+-
+  const dataPoints = [
+    {
+      place: 'Степанцминда (старт)',
+      coordinates: { lat: '42.6561', lng: '44.6453' },
+      text: 'Старт маршрута из Степанцминды. Гергетский храм и виды на Казбек — идеальное начало. Ночлег в гостевом доме или кемпинге.',
+      photo: 'images/stephancminda.jpeg',
+      link: 'https://gotrip.ge/blog/chto-posmotret/stepantsminda-kazbegi/'
+    },
+    {
+      place: 'Уплисцихе',
+      coordinates: { lat: '41.964158', lng: '44.185685' },
+      text: 'Древний пещерный город недалеко от Гори — логичная первая остановка по Военно-Грузинской дороге. 2–3ч на осмотр скал и залов.',
+      photo: 'images/uplistsikhe.jpeg',
+      link: 'https://gotrip.ge/blog/chto-posmotret/uplistsikhe/'
+    },
+    {
+      place: 'Оборудованный кемпинг (Имеретия)',
+      coordinates: { lat: '42.587277', lng: '42.700982' },
+      text: 'После Уплисцихе — первый кемпинг в Имеретии. Живописные виды, костёр вечером. Отдых перед каньонами.',
+      photo: 'images/aghvi-eco-camping-in-georgia-in-campsaround-13.jpg',
+      link: 'https://www.instagram.com/aghvi.camping/'
+    },
+    {
+      place: 'Каньон Окаце',
+      coordinates: { lat: '42.454770', lng: '42.549449' },
+      text: 'Весенний каньон — бирюзовая река, подвесной мост. Идеально для фото и адреналина.',
+      photo: 'images/okace.jpg',
+      link: 'https://www.advantour.com/rus/georgia/kutaisi/okatse-canyon.htm'
+    },
+    {
+      place: 'Campsite under two oaks',
+      coordinates: { lat: '42.362143', lng: '42.597318' },
+      text: 'Кемпинг под двумя дубами после каньонов. Палатки, природа, восстановление сил.',
+      photo: 'images/oaks.jpg',
+      link: 'https://www.booking.com/hotel/ge/campsite-under-two-oaks.ru.html'
+    },
+    {
+      place: 'Пещера Прометея',
+      coordinates: { lat: '42.376668', lng: '42.600808' },
+      text: 'Подземный мир со сталактитами и подсветкой. Прохладно внутри — отличный контраст весенней жаре.',
+      photo: 'images/prometheus-cave-formed.jpg',
+      link: 'https://www.advantour.com/rus/georgia/kutaisi/prometheus-cave.htm'
+    },
+    {
+      place: 'Заброшенные санатории',
+      coordinates: { lat: '42.327720', lng: '42.602638' },
+      text: 'Цхалтубо — сталинские руины для сталкерских фото. Атмосферно и загадочно.',
+      photo: 'images/chaltubo.jpeg',
+      link: 'https://dzen.ru/a/Zh_eD9cHVTY55uX1'
+    },
+    {
+      place: 'Крепость Нокалакеви',
+      coordinates: { lat: '42.357865', lng: '42.193240' },
+      text: 'Древняя крепость на Black Sea coast. Переход от гор к побережью.',
+      photo: 'images/nokalakevi.jpg',
+      link: 'https://travelgeorgia.ru/98/'
+    },
+    {
+      place: 'Горячие источники (у Нокалакеви)',
+      coordinates: { lat: '42.365617', lng: '42.195372' },
+      text: 'Релакс в тёплых источниках. Идеальное место для кемпинга после долгого дня.',
+      photo: 'images/nokalakevis-gogirdovani-tsqlebi-1.jpg',
+      link: 'https://georgiantravelguide.com/ru/nokalakevis-gogirdovani-tsqlebi'
+    },
+    {
+      place: 'Пляж Уреки',
+      coordinates: { lat: '41.997682', lng: '41.758343' },
+      text: 'Чёрный магнитный песок — редкость для Грузии. Лечебный пляж для отдыха.',
+      photo: 'images/sea.jpeg',
+      link: 'https://101hotels.com/georgia/ureki/camping_in_ureki.html'
+    },
+    {
+      place: 'Крепость Хертвиси',
+      coordinates: { lat: '41.479628', lng: '43.285770' },
+      text: 'Одна из древнейших крепостей Грузии. Короткая остановка перед Вардзией.',
+      photo: 'images/caption.jpg',
+      link: 'https://v-georgia.com/showplaces/xarcvisi-odna-iz-naistarejshix-krepostej-gruzii-2/'
+    },
+    {
+      place: 'Вардзия',
+      coordinates: { lat: '41.381076', lng: '43.284224' },
+      text: 'Пещерный монастырь XII века. Обязательная точка — must-see Грузии.',
+      photo: 'images/vardzia.jpg',
+      link: 'http://advantour.com/rus/georgia/vardzia.htm'
+    },
+    {
+      place: 'озеро Табацкури',
+      coordinates: { lat: '41.645570', lng: '43.626242' },
+      text: 'Вулканическое озеро на 2000м. Кемпинг с видами на горы.',
+      photo: 'images/tabackuri.jpg',
+      link: 'https://georgiantravelguide.com/ru/ozero-tabackuri'
+    },
+    {
+      place: 'Село Хуло ⚠️',
+      coordinates: { lat: '41.636345', lng: '42.296034' },
+      text: 'Аджария highlands — картошка и канатка. ⚠️ Серпантины мокрые весной.',
+      photo: 'images/hulo.jpg',
+      link: 'https://batumilife.com/hulo/'
+    },
+    {
+      place: 'Гомисмта ⚠️',
+      coordinates: { lat: '41.827945', lng: '42.158217' },
+      text: 'Королевство облаков в Гурии. ⚠️ Высокогорье — риск тумана/снега.',
+      photo: 'images/gomismta.webp',
+      link: 'https://v-georgia.com/showplaces/gomis-mta-pervozdannaya-priroda-vyshe-oblakov/'
+    },
+    {
+      place: 'Крепость Петра',
+      coordinates: { lat: '41.767854', lng: '41.753856' },
+      text: 'Византийская крепость над Чёрным морем. Финал аджарского блока.',
+      photo: 'images/petra-fortress.jpg',
+      link: 'https://www.advantour.com/rus/georgia/batumi/petra.htm'
+    },
+    {
+      place: 'Кемпинг у водопада',
+      coordinates: { lat: '41.530475', lng: '41.710530' },
+      text: 'Ночёвка у Mirveti водопада после Петры. Шум воды — природный белый шум.',
+      photo: 'images/mirveti.jpeg',
+      link: 'https://georgia.to/ru/places-to-go/adjara/mirveti-waterfall/'
+    },
+    {
+      place: 'Цветные горы (Кахетия)',
+      coordinates: { lat: '41.541436', lng: '45.248625' },
+      text: 'Яркие холмы Мравалцваро. Переход к восточному блоку.',
+      photo: 'images/mravalckaro.jpeg',
+      link: 'https://georgiantravelguide.com/ru/raznocvetnye-gory-mravalckaro'
+    },
+    {
+      place: 'Национальный парк Вашловани',
+      coordinates: { lat: '41.246119', lng: '45.843801' },
+      text: 'Саванна и каньоны как в Африке. Кемпинг в парке с гидом.',
+      photo: 'images/vashlovani.jpg',
+      link: 'https://georgiantravelguide.com/ru/nacionalnyy-park-vashlovani'
+    },
+    {
+      place: 'Шатили ⚠️',
+      coordinates: { lat: '42.659396', lng: '45.156477' },
+      text: 'Хевсуретские башни. ⚠️ Дикая дорога — открыта только летом.',
+      photo: 'images/shatili.jpg',
+      link: 'https://www.travelgeorgia.ru/89/'
+    },
+    {
+      place: 'Обсерватория Абастумани ⚠️',
+      coordinates: { lat: '41.754647', lng: '42.832104' },
+      text: 'Астрофизическая обсерватория СССР. ⚠️ Высокогорье — серпантины.',
+      photo: 'images/abastumani.jpeg',
+      link: 'https://v-georgia.com/showplaces/observatoriya-v-abastumani-mesto-gde-mozhno-smotret-na-zvezdy/'
+    },
+    {
+      place: 'Местия ⚠️',
+      coordinates: { lat: '43.039262', lng: '42.730278' },
+      text: 'Сванские башни (опционально). ⚠️ Серпантин Зугдиди-Местия часто закрыт в апреле.',
+      photo: 'images/mestiya.jpg',
+      link: 'https://gotrip.ge/blog/chto-posmotret/mestiya-chto-posmotret/'
+    }
+  ];
