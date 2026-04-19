@@ -1,0 +1,23 @@
+.footer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: rgb(230, 130, 50, 0.7);
+}
+
+.footer__wrapper {
+    background-image:
+        url("../../images/compass@1x.webp"),
+        url("../../images/compass@1x.png");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    height: 300px;
+    width: 300px;
+
+    @media (min-resolution: 2dppx) {
+        background-image:
+            url("../../images/compass@2x.webp"),
+            url("../../images/compass@2x.png");
+    }
+}

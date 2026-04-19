@@ -1,0 +1,20 @@
+doctype html
+html(lang="en")
+    head
+        meta(charset="UTF-8")
+        meta(name="viewport", content="width=, initial-scale=1.0")
+        title Document
+        link(rel="preconnect", href="https://fonts.googleapis.com")
+        link(rel="preconnect", href="https://fonts.gstatic.com", crossorigin)
+        link(rel="stylesheet", href="https://fonts.googleapis.com/css2?family=Manrope:wght@600;700&subset=latin,cyrillic&display=swap")
+        link(rel="stylesheet", href="styles/style.css")
+    body.page 
+        include header.pug
+        main.main
+            .main__wrapper
+                include hero.pug
+                include cards.pug
+                include map.pug
+        footer.footer     
+            .footer__wrapper
+        script(src="scripts/index.js" defer)

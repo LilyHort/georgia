@@ -1,0 +1,46 @@
+include data-point.pug
+
+section.cards
+    .cards__wrapper
+        .cards__content
+            h2.cards__title Точки маршрута
+            p#coords-copy-live.visually-hidden(aria-live='polite')
+            .coords-tooltip.js-coords-tooltip(role='status' aria-live='polite' aria-atomic='true')
+                span.coords-tooltip__text.js-coords-tooltip-text
+            ul.cards__grid.list-reset
+                each point, pointIndex in dataPoints
+                    -
+                        const lat = point.coordinates && point.coordinates.lat
+                        const lng = point.coordinates && point.coordinates.lng
+                        const hasCoords =
+                            lat != null && String(lat).trim() !== '' && lng != null && String(lng).trim() !== ''
+                        const coordsLabel = hasCoords
+                            ? `Скопировать координаты${point.place ? `: ${point.place}` : ''}`
+                            : null
+                        const cardPhoto = point.photo && String(point.photo).trim()
+                        const cardBgUrl = cardPhoto ? cardPhoto.replace(/"/g, '') : ''
+                        const cardBgStyle = cardBgUrl
+                            ? `background-image: linear-gradient(180deg, rgb(0 0 0 / 0.42) 0%, rgb(0 0 0 / 0.82) 100%), url(${cardBgUrl})`
+                            : null
+                    li.cards__card(
+                        id=`route-point-${pointIndex}`,
+                        class=cardBgStyle ? 'cards__card--has-photo' : null,
+                        style=cardBgStyle || undefined
+                    )
+                        h3.cards__card-title= point.place || 'Без названия'
+                        p.cards__card-text= point.text
+                        if point.link
+                            p.cards__card-actions
+                                a.cards__card-link(
+                                    href=point.link,
+                                    target='_blank',
+                                    rel='noopener noreferrer'
+                                ) Тык сюда 	&#128072;
+                        if hasCoords
+                            p.cards__card-coords-wrap
+                                button.cards__card-coords.cards__item--has-coords(
+                                    type='button',
+                                    data-lat=lat,
+                                    data-lng=lng,
+                                    aria-label=coordsLabel
+                                ) Скопировать координаты

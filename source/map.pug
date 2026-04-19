@@ -1,0 +1,9 @@
+//- Ключ JavaScript API и HTTP Геокодер: https://developer.tech.yandex.ru/services/
+- const yandexMapsApiKey = 'bcd385e7-7d30-4cbb-adb6-d091b049e0ad'
+
+section.map.map-block.js-yandex-map-block
+    h2.map__title.visually-hidden Карта
+    .map__canvas.js-yandex-map(aria-label='Карта')
+    if yandexMapsApiKey
+        script(src=`https://api-maps.yandex.ru/2.1/?apikey=${yandexMapsApiKey}&lang=ru_RU` defer)
+    else

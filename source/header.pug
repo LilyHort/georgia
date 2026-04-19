@@ -1,0 +1,23 @@
+header.header
+    .header__wrapper
+        .header__content        
+            picture
+                source(srcset="images/mountain@1x.webp 1x, images/mountain@2x.webp 2x" type="image/webp")
+                img.header__image(src="images/mountain@1x.png" srcset="images/mountain@2x.png 2x" width="70" height="70" alt="")
+            .header__container    
+                h1.header__title
+                    svg.header__title-graphic(xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 52" fill="none" role="img" aria-labelledby="header-title-text")
+                        title#header-title-text Сакартвело 2026
+                        defs
+                            linearGradient#headerTitleGrad(x1="0%" y1="0%" x2="100%" y2="100%")
+                                stop(offset="0%" stop-color="#14110e")
+                                stop(offset="45%" stop-color="#3d2a1f")
+                                stop(offset="100%" stop-color="#14110e")
+                            filter#headerTitleShadow(x="-10%" y="-10%" width="120%" height="130%" color-interpolation-filters="sRGB")
+                                feDropShadow(dx="0" dy="1.2" stdDeviation="0.8" flood-color="#000" flood-opacity="0.22")
+                        path.header__title-wave(d="M4 42c36 4 72-6 108-2 36 4 72-2 108 2 36-4 72 4 96 0" stroke="#CE2B37" stroke-width="1.25" stroke-linecap="round" fill="none" opacity="0.9")
+                        text(x="160" y="30" text-anchor="middle" dominant-baseline="middle" font-family="Manrope, system-ui, sans-serif" font-size="24" font-weight="700" fill="url(#headerTitleGrad)" filter="url(#headerTitleShadow)") Сакартвело
+                        text.header__title-year(x="160" y="47" text-anchor="middle" dominant-baseline="middle" font-family="Manrope, system-ui, sans-serif" font-size="10.5" font-weight="600" letter-spacing="0.38em" fill="#5c4336") 2026
+            picture
+                source(srcset="images/icon-flag@1x.webp 1x, images/icon-flag@2x.webp 2x" type="image/webp")
+                img(src="images/icon-flag@1x.png" srcset="images/icon-flag@2x.png 2x" width="30" height="30" alt="Флаг Грузии")
